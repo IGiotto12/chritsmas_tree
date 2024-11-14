@@ -7,14 +7,14 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 $( function() {
-        var endDate = "December  28, 2015 15:03:25";
+        var endDate = "December  25, 2024 00:00:00";
 
         $('.countdown.simple').countdown({ date: endDate });
 
         $('.countdown.styled').countdown({
           date: endDate,
           render: function(data) {
-            $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+            $(this.el).html("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
           }
         });
 
@@ -47,10 +47,12 @@ var customScripts = {
             filter: '',
             easing: 'swing',
             begin: function () {
-                //I get fired when the animation is starting
+              //I get fired when the animation is starting
+              alert("test");
             },
             end: function () {
-                   //I get fired when the animation is ending
+              //I get fired when the animation is ending
+              alert("test"); 
 				if(!$('#main-nav ul li:first-child').hasClass('active')){
 					$('.header').addClass('addBg');
 				}else{
