@@ -6,6 +6,12 @@
 Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
+
+$(document).ready(function() {
+  $('#welcomeMessage').fadeIn(1000).delay(3000).fadeOut(1000);
+  document.getElementById('bgMusic').play();
+});
+
 $( function() {
         var endDate = "December  25, 2024 00:00:00";
 
@@ -47,12 +53,10 @@ var customScripts = {
             filter: '',
             easing: 'swing',
             begin: function () {
-              //I get fired when the animation is starting
-              alert("test");
+              alert(" 恋爱请拨打电话给佳麒同学，\n 关于更多信息请拨打电话给佳麒同学 \n 联系方式：vx、xhs、dy、facetime, 火速联系");
             },
             end: function () {
               //I get fired when the animation is ending
-              alert("test"); 
 				if(!$('#main-nav ul li:first-child').hasClass('active')){
 					$('.header').addClass('addBg');
 				}else{
@@ -102,6 +106,7 @@ $('document').ready(function () {
 	 $.backstretch([
       "images/img1.jpg"
     , "images/img2.jpg"
+    , "images/img3.jpg"
   ], {duration: 3000, fade: 1250});
   
     customScripts.init();

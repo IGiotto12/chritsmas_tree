@@ -10,6 +10,21 @@ Donate to remove backlink form the template.
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
 }
+
+.message-box {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 15px;
+	background-color: #333;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 16px;
+	z-index: 1000;
+	opacity: 0.9;
+}
+
 body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
