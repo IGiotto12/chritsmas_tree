@@ -25,6 +25,11 @@ Donate to remove backlink form the template.
 	opacity: 0.9;
 }
 
+#qrcode {
+	margin-top: 20px;
+	text-align: center;
+  }
+
 body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;

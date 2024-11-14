@@ -7,6 +7,18 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 
+function generateQRCode() {
+  var pageUrl = window.location.href;
+  new QRCode(document.getElementById("qrcode"), {
+    text: pageUrl,
+    width: 128,
+    height: 128,
+    colorDark: "#000000",
+    colorLight: "#ffffff"
+  });
+}
+window.onload = generateQRCode;
+
 $(document).ready(function() {
   $('#welcomeMessage').fadeIn(1000).delay(3000).fadeOut(1000);
   document.getElementById('bgMusic').play();
