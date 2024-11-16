@@ -7,6 +7,7 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 
+// This can generate QRCode but now archieved since I have it already
 function generateQRCode() {
   var pageUrl = window.location.href;
   new QRCode(document.getElementById("qrcode"), {
@@ -19,20 +20,49 @@ function generateQRCode() {
 }
 window.onload = generateQRCode;
 
-$(document).ready(function() {
-  $('#welcomeMessage').fadeIn(1000).delay(3000).fadeOut(1000);
-  document.getElementById('bgMusic').play();
+// Show the pop-up when the page loads
+window.addEventListener("load", () => {
+  const popup = document.getElementById("popup");
+  const overlay = document.getElementById("overlay");
+  popup.style.display = "block";
+  overlay.style.display = "block";
 });
 
-$( function() {
-        var endDate = "December  25, 2024 00:00:00";
+// Play music when the button is clicked
+document.getElementById("playMusicButton").addEventListener("click", () => {
+  const popup = document.getElementById("popup");
+  const overlay = document.getElementById("overlay");
+  const music = document.getElementById("bgMusic");
+  // Hide the pop-up and overlay
+  popup.style.display = "none";
+  overlay.style.display = "none";
 
+  // Play the music
+  music.play().catch(error => {
+    console.log("Music playback error:", error);
+  });
+});
+
+var chritsmas = "December  25, 2024 00:00:00"
+var testDate = new Date();
+testDate.setSeconds(testDate.getSeconds() + 10); 
+// CountDown logic
+$( function() {
+        var endDate = testDate; 
         $('.countdown.simple').countdown({ date: endDate });
 
         $('.countdown.styled').countdown({
           date: endDate,
           render: function(data) {
-            $(this.el).html("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+            $(this.el).html(
+              "<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+          },
+          onEnd: function () {
+
+            const messageSection = document.getElementById('messageSection');
+            messageSection.innerHTML = `
+            <strong>圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！ </strong>
+            `;
           }
         });
 
