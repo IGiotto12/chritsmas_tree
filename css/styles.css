@@ -12,6 +12,30 @@ Donate to remove backlink form the template.
 }
 
 /* Extra for some modifications*/
+#messageSection {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#messageSection.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#messageSection.visible {
+    opacity: 1;
+}
+
+.snowflake {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: linear-gradient(white, white);
+	/* Workaround for Chromium's selective color inversion */
+	border-radius: 50%;
+	filter: drop-shadow(0 0 10px white);
+}
+
 #popup {
     display: none;
     position: fixed;
@@ -48,6 +72,7 @@ button {
 button:hover {
     background-color: #45a049;
 }
+/* extra ends here */
 
 body {
 	height: 100%;

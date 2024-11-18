@@ -49,8 +49,6 @@ testDate.setSeconds(testDate.getSeconds() + 10);
 // CountDown logic
 $( function() {
         var endDate = testDate; 
-        $('.countdown.simple').countdown({ date: endDate });
-
         $('.countdown.styled').countdown({
           date: endDate,
           render: function(data) {
@@ -58,11 +56,25 @@ $( function() {
               "<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
           },
           onEnd: function () {
+            $(this.el).hide();
 
             const messageSection = document.getElementById('messageSection');
-            messageSection.innerHTML = `
-            <strong>圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！ </strong>
-            `;
+        
+            // Step 1: Fade out the old content
+            messageSection.classList.add('hidden');
+            
+            // Step 2: Wait for the fade-out transition to complete
+            setTimeout(() => {
+                // Step 3: Replace the content
+                messageSection.innerHTML = `
+                    <img src='../images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
+                    <strong>圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！</strong>
+                `;
+                
+                // Step 4: Fade in the new content
+                messageSection.classList.remove('hidden');
+                messageSection.classList.add('visible');
+            }, 500); // Matches the CSS transition duration (0.5s)
           }
         });
 
