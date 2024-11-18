@@ -45,7 +45,7 @@ document.getElementById("playMusicButton").addEventListener("click", () => {
 
 var chritsmas = "December  25, 2024 00:00:00"
 var testDate = new Date();
-testDate.setSeconds(testDate.getSeconds() + 10); 
+testDate.setSeconds(testDate.getSeconds() + 5); 
 // CountDown logic
 $( function() {
         var endDate = testDate; 
@@ -67,13 +67,27 @@ $( function() {
             setTimeout(() => {
                 // Step 3: Replace the content
                 messageSection.innerHTML = `
-                    <img src='../images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
-                    <strong>圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！</strong>
+                  <strong id='typewriter-text'></strong>
+                  <img src='images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
                 `;
                 
                 // Step 4: Fade in the new content
                 messageSection.classList.remove('hidden');
                 messageSection.classList.add('visible');
+
+                // Step 5
+                const textElement = document.getElementById('typewriter-text');
+                const text = "圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！";
+                let index = 0;
+              
+                function type() {
+                    if (index < text.length) {
+                        textElement.innerHTML += text.charAt(index);
+                        index++;
+                        setTimeout(type, 180); // Adjust typing speed, number is the time
+                    }
+                }
+                type();
             }, 500); // Matches the CSS transition duration (0.5s)
           }
         });
