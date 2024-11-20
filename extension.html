@@ -4,20 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>视频test</title>
+  <link rel="stylesheet" href="css/scanner.css" />
 </head>
 <body>
-  <video id="camera" autoplay playsinline></video>
-  <script>
-      navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { exact: "environment" } }
-      })
-      .then((stream) => {
-        document.getElementById('camera').srcObject = stream;
-      })
-      .catch((error) => {
-        console.error('Camera access failed:', error);
-      });
-  </script>
+  <div id="scanner-container">
+    <video id="camera" autoplay playsinline></video>
+    <div class="scanning-line"></div>
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
