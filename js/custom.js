@@ -7,18 +7,62 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 
-// This can generate QRCode but now archieved since I have it already
-function generateQRCode() {
-  var pageUrl = window.location.href;
-  new QRCode(document.getElementById("qrcode"), {
-    text: pageUrl,
-    width: 128,
-    height: 128,
-    colorDark: "#000000",
-    colorLight: "#ffffff"
+
+// try video
+const video = document.getElementById('camera');
+const canvas = document.createElement('canvas');
+const context = canvas.getContext('2d');
+
+// Periodically capture frames
+setInterval(() => {
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+  // Process image data for object detection
+  detectObject(imageData);
+}, 100);
+
+let model;
+cocoSsd.load().then((loadedModel) => {
+  model = loadedModel;
+});
+
+function detectObject(imageData) {
+  model.detect(canvas).then((predictions) => {
+    predictions.forEach((prediction) => {
+      if (prediction.class === 'object_name') { // Replace 'object_name' with your target
+        triggerMessage(prediction.class);
+      }
+    });
   });
 }
-window.onload = generateQRCode;
+
+function triggerMessage(object) {
+  alert(`Detected: ${object}`);
+}
+
+const objectLibrary = ['cat', 'dog', 'cup'];
+
+function detectObject(imageData) {
+  model.detect(canvas).then((predictions) => {
+    predictions.forEach((prediction) => {
+      if (objectLibrary.includes(prediction.class)) {
+        triggerMessage(prediction.class);
+      }
+    });
+  });
+}
+
+predictions.forEach((prediction) => {
+  context.strokeStyle = 'red';
+  context.lineWidth = 2;
+  context.strokeRect(...prediction.bbox);
+  context.font = '18px Arial';
+  context.fillStyle = 'red';
+  context.fillText(prediction.class, prediction.bbox[0], prediction.bbox[1] - 10);
+});
 
 // Show the pop-up when the page loads
 window.addEventListener("load", () => {
@@ -77,7 +121,7 @@ $( function() {
 
                 // Step 5
                 const textElement = document.getElementById('typewriter-text');
-                const text = "圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我真的很希望和你一起渡过之后的每个圣诞以及每个节日，想在每一个重要的日子里都要给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！";
+                const text = "圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我期待以后和你一起渡过的每个圣诞以及每个节日，想在每一个重要的日子里都给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！";
                 let index = 0;
               
                 function type() {

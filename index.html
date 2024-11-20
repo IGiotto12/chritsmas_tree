@@ -50,6 +50,16 @@ Donate to remove backlink form the site
     <li><a href="#services" class="scroll-link">恋爱服务</a></li>
     <li><a href="#aboutUs" class="scroll-link">关于佳麒同学</a></li>
     <li><a href="#contactUs" class="scroll-link">联系佳麒同学</a></li>
+    <video id="camera" autoplay playsinline></video>
+<script>
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then((stream) => {
+      document.getElementById('camera').srcObject = stream;
+    })
+    .catch((error) => {
+      console.error('Camera access failed:', error);
+    });
+</script>
   </ul>
 </nav>
 <!--/.header-->
@@ -77,6 +87,6 @@ Donate to remove backlink form the site
 <script src="js/pure-snow.js" defer></script>
 <script src="js/custom.js" type="text/javascript"></script> 
 <script type="text/javascript" src="js/jquery.countdown.js"></script>
-<!-- QR Code generator lib (used)-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 </html>
