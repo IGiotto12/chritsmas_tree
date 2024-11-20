@@ -7,63 +7,6 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 
-
-// try video
-const video = document.getElementById('camera');
-const canvas = document.createElement('canvas');
-const context = canvas.getContext('2d');
-
-// Periodically capture frames
-setInterval(() => {
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-  // Process image data for object detection
-  detectObject(imageData);
-}, 100);
-
-let model;
-cocoSsd.load().then((loadedModel) => {
-  model = loadedModel;
-});
-
-function detectObject(imageData) {
-  model.detect(canvas).then((predictions) => {
-    predictions.forEach((prediction) => {
-      if (prediction.class === 'object_name') { // Replace 'object_name' with your target
-        triggerMessage(prediction.class);
-      }
-    });
-  });
-}
-
-function triggerMessage(object) {
-  alert(`Detected: ${object}`);
-}
-
-const objectLibrary = ['cat', 'dog', 'cup'];
-
-function detectObject(imageData) {
-  model.detect(canvas).then((predictions) => {
-    predictions.forEach((prediction) => {
-      if (objectLibrary.includes(prediction.class)) {
-        triggerMessage(prediction.class);
-      }
-    });
-  });
-}
-
-predictions.forEach((prediction) => {
-  context.strokeStyle = 'red';
-  context.lineWidth = 2;
-  context.strokeRect(...prediction.bbox);
-  context.font = '18px Arial';
-  context.fillStyle = 'red';
-  context.fillText(prediction.class, prediction.bbox[0], prediction.bbox[1] - 10);
-});
-
 // Show the pop-up when the page loads
 window.addEventListener("load", () => {
   const popup = document.getElementById("popup");
