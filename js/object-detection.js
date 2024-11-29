@@ -42,7 +42,7 @@ function detectObject() {
   model.detect(canvas).then((predictions) => {
     const scannerOverlay = document.querySelector('.scanner-overlay');
     predictions.forEach((prediction) => {
-      if (prediction.class === 'bottle') { // Target object
+      if (prediction.class === 'cat') { // Target object
         triggerMessage(prediction.class);
         scannerOverlay.style.borderColor = "green"; // Indicate success
       }
