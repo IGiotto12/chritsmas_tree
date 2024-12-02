@@ -3,6 +3,108 @@ Author URI: http://webthemez.com/
 Donate to remove backlink form the template.
 */
 
+.message-container {
+    position: relative;
+    padding: 20px;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 80%;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0;
+    animation: imageAppear 0.8s ease forwards;
+    animation-delay: 0.3s;
+    flex-shrink: 0;
+}
+
+.greeting-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: bubbleAppear 0.5s ease forwards;
+}
+
+.greeting-bubble:after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-right-color: rgba(255, 255, 255, 0.9);
+    border-left: 0;
+}
+
+#typewriter-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+.celebration-image {
+    opacity: 0;
+    transform: scale(0.5);
+    animation: imageAppear 0.8s ease forwards;
+    animation-delay: 1s;
+    max-width: 300px;
+    margin-left: 75px;
+}
+
+.celebration-image img {
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bubbleAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes imageAppear {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keep your existing char and fade-in animations */
+.char {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: inline-block;
+    background: linear-gradient(45deg, #D4418E, #0652C5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+.char.fade-in {
+    opacity: 1;
+}
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
 * {
@@ -13,8 +115,8 @@ Donate to remove backlink form the template.
 
 /* Extra for some modifications*/
 #messageSection {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    padding-left: 100px;
 }
 
 #messageSection.hidden {

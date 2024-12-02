@@ -23,11 +23,6 @@ document.getElementById("playMusicButton").addEventListener("click", () => {
   // Hide the pop-up and overlay
   popup.style.display = "none";
   overlay.style.display = "none";
-
-  // Play the music
-  music.play().catch(error => {
-    console.log("Music playback error:", error);
-  });
 });
 
 var chritsmas = "December  25, 2024 00:00:00"
@@ -44,38 +39,64 @@ $( function() {
           },
           onEnd: function () {
             $(this.el).hide();
-
+            
+            // Hide the logo
+            document.querySelector('.logo').style.display = 'none';
+            
             const messageSection = document.getElementById('messageSection');
-        
+            
             // Step 1: Fade out the old content
             messageSection.classList.add('hidden');
             
             // Step 2: Wait for the fade-out transition to complete
             setTimeout(() => {
-                // Step 3: Replace the content
-                messageSection.innerHTML = `
-                  <strong id='typewriter-text'></strong>
-                  <img src='images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
-                `;
+              // Step 3: Replace the content with chat bubble and image
+              messageSection.innerHTML = `
+              <div class="message-container">
+                  <div class="message-content">
+                      <div class="message-row">
+                          <div class="profile-pic">
+                              <img src='images/profile-img.jpeg' alt="Profile Picture">
+                          </div>
+                          <div class="greeting-bubble">
+                              <strong id='typewriter-text'></strong>
+                          </div>
+                      </div>
+                      <div class="celebration-image">
+                          <img src='images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
+                      </div>
+                  </div>
+              </div>
+          `;
                 
                 // Step 4: Fade in the new content
                 messageSection.classList.remove('hidden');
                 messageSection.classList.add('visible');
 
-                // Step 5
+                // Step 5: Typewriter effect
                 const textElement = document.getElementById('typewriter-text');
-                const text = "圣诞快乐🎄！虽然这个圣诞没有陪在你身边，但是我期待以后和你一起渡过的每个圣诞以及每个节日，想在每一个重要的日子里都给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！";
-                let index = 0;
-              
-                function type() {
-                    if (index < text.length) {
-                        textElement.innerHTML += text.charAt(index);
-                        index++;
-                        setTimeout(type, 180); // Adjust typing speed, number is the time
+                const text = "圣诞快乐！虽然这个圣诞没有陪在你身边，但是我期待以后和你一起渡过的每个圣诞以及每个节日，想在每一个重要的日子里都给你一份用心的礼物，想和你在一起久一点再久一点， 我爱你呀！";
+                
+                // Pre-render all characters
+                [...text].forEach(char => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = char;
+                    textElement.appendChild(span);
+                });
+                
+                // Animate characters one by one
+                const chars = textElement.querySelectorAll('.char');
+                function animateChars(index = 0) {
+                    if (index < chars.length) {
+                        chars[index].classList.add('fade-in');
+                        setTimeout(() => animateChars(index + 1), 250);
                     }
                 }
-                type();
-            }, 500); // Matches the CSS transition duration (0.5s)
+                
+                // Start the animation
+                animateChars();
+            }, 500);
           }
         });
 
@@ -138,23 +159,8 @@ var customScripts = {
                 return false;
             });
     },   
-	waySlide: function(){
-		  	/* Waypoints Animations
-		   ------------------------------------------------------ */		   			  			
-			$('#services').waypoint(function() {				
-			$('#services .col-md-3').addClass( 'animated fadeInUp show' );   
-			}, { offset: 800}); 
-			$('#aboutUs').waypoint(function() {				
-			$('#aboutUs').addClass( 'animated fadeInUp show' );   
-			}, { offset: 800}); 
-			$('#contactUs').waypoint(function() {				
-			$('#contactUs .parlex-back').addClass( 'animated fadeInUp show' );   
-			}, { offset: 800}); 
-			 						 
-		}, 
     init: function () {
-        customScripts.onePageNav();  
-		customScripts.waySlide(); 
+        customScripts.onePageNav();
     }
 }
 $('document').ready(function () {
