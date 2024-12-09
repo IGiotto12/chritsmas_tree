@@ -6,24 +6,27 @@ Donate to remove backlink form the template.
 .message-container {
     position: relative;
     padding: 20px;
+    max-width: 100%;
 }
 
 .message-content {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .message-row {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .profile-pic {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
     opacity: 0;
@@ -36,7 +39,9 @@ Donate to remove backlink form the template.
     position: relative;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    padding: 20px 30px;
+    padding: 15px 20px;
+    flex: 1;
+    min-width: 200px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateY(20px);
@@ -56,8 +61,8 @@ Donate to remove backlink form the template.
 }
 
 #typewriter-text {
-    font-size: 1.2em;
-    line-height: 1.6;
+    font-size: 1em;
+    line-height: 1.4;
     font-weight: bold;
 }
 
@@ -66,8 +71,8 @@ Donate to remove backlink form the template.
     transform: scale(0.5);
     animation: imageAppear 0.8s ease forwards;
     animation-delay: 1s;
-    max-width: 300px;
-    margin-left: 75px;
+    max-width: 100%;
+    margin-left: 0;
 }
 
 .celebration-image img {
