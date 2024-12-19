@@ -6,7 +6,7 @@ Donate to remove backlink form the template.
     position: relative;
     width: 60px;
     height: 60px;
-    margin: 20px auto;
+    margin: 80px auto 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -37,7 +37,7 @@ Donate to remove backlink form the template.
 
 .gift-box.opened .gift-box-content {
     opacity: 1;
-    top: -150px;
+    top: -120px;
 }
 
 .hidden-tree {
@@ -68,19 +68,12 @@ Donate to remove backlink form the template.
 }
 
 .profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    opacity: 0;
-    animation: imageAppear 0.8s ease forwards;
-    animation-delay: 0.3s;
-    flex-shrink: 0;
+    display: none;
 }
 
 .greeting-bubble {
     position: relative;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 15px;
     padding: 15px 20px;
     flex: 1;
@@ -92,15 +85,7 @@ Donate to remove backlink form the template.
 }
 
 .greeting-bubble:after {
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: 20px;
-    width: 0;
-    height: 0;
-    border: 15px solid transparent;
-    border-right-color: rgba(255, 255, 255, 0.9);
-    border-left: 0;
+    display: none;
 }
 
 #typewriter-text {
