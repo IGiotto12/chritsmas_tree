@@ -62,16 +62,53 @@ $( function() {
                               <strong id='typewriter-text'></strong>
                           </div>
                       </div>
-                      <div class="celebration-image">
-                          <img src='images/tree.png' alt="Christmas Tree" style="max-width: 100%; height: auto;">
+                      <div class="gift-box" id="giftBox">
+                          <div class="gift-box-lid">🎁</div>
+                          <div class="gift-box-content">
+                              <img src='images/tree.png' alt="Christmas Tree" class="hidden-tree">
+                          </div>
                       </div>
                   </div>
               </div>
           `;
                 
+                // Add gift box click handler
+                const giftBox = document.getElementById('giftBox');
+                giftBox.addEventListener('click', function() {
+                    this.classList.toggle('opened');
+                });
+
                 // Step 4: Fade in the new content
                 messageSection.classList.remove('hidden');
                 messageSection.classList.add('visible');
+
+                // Destroy the initial background before starting slideshow
+                $.backstretch("destroy", false);
+                
+                // Initialize backstretch slideshow after countdown
+                $.backstretch([
+                  "images/img1.jpg",
+                  "images/img3.jpg",
+                  "images/img4.jpg",
+                  "images/img5.jpg",
+                  "images/img6.jpg",
+                  "images/img7.jpg",
+                  "images/img8.jpg",
+                  "images/img9.jpg",
+                  "images/img10.jpg",
+                  "images/img11.jpg",
+                  "images/img12.jpg",
+                  "images/img13.jpg",
+                  "images/img14.jpg",
+                  "images/img15.jpg",
+                  "images/img16.jpg",
+                  "images/img17.jpg",
+                  "images/img18.jpg",
+                  "images/img19.jpg",
+                  "images/img20.jpg",
+                  "images/img21.jpg",
+                  "images/img22.jpg",
+                ], {duration: 3000, fade: 1250});
 
                 // Step 5: Typewriter effect
                 const textElement = document.getElementById('typewriter-text');
@@ -99,19 +136,6 @@ $( function() {
             }, 500);
           }
         });
-
-        $('.countdown.callback').countdown({
-          date: +(new Date) + 10000,
-          render: function(data) {
-            $(this.el).text(this.leadingZeros(data.sec, 2) + " sec");
-          },
-          onEnd: function() {
-            $(this.el).addClass('ended');
-          }
-        }).on("click", function() {
-          $(this).removeClass('ended').data('countdown').update(+(new Date) + 10000).start();
-        });
-		
 		
 		
       });
@@ -164,15 +188,10 @@ var customScripts = {
     }
 }
 $('document').ready(function () {
-	 $.backstretch([
-      "images/img1.jpg"
-    , "images/img2.jpg"
-    , "images/img3.jpg"
-    , "images/img4.jpg"
-    , "images/img5/jpg"
-  ], {duration: 3000, fade: 1250});
-  
-    customScripts.init();
+	 // Set single initial background
+	 $.backstretch("images/img0.jpg");
+	 
+	 customScripts.init();
 	$('#services .col-md-3, #features, #aboutUs, #clients, #portfolio, #plans, #contactUs .parlex-back').css('opacity','0');
 	$( "#menuToggle" ).toggle(function() {
 	$(this).find('i').removeClass('fa-bars').addClass('fa-remove');
