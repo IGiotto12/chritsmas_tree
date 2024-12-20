@@ -20,12 +20,18 @@ document.getElementById("playMusicButton").addEventListener("click", () => {
   const popup = document.getElementById("popup");
   const overlay = document.getElementById("overlay");
   const music = document.getElementById("bgMusic");
-  // Hide the pop-up and overlay
+  
+  // Add error handling for audio playback
+  music.play().catch(function(error) {
+    console.log("Audio playback failed:", error);
+  });
+  
+  // Hide the pop-up and overlay after ensuring music starts
   popup.style.display = "none";
   overlay.style.display = "none";
 });
 
-var chritsmas = "December  25, 2024 00:00:00"
+var chritsmas = "December  24, 2024 00:00:00"
 var testDate = new Date();
 testDate.setSeconds(testDate.getSeconds() + 5); 
 // CountDown logic
@@ -42,7 +48,6 @@ $( function() {
             
             // Hide the logo
             document.querySelector('.logo').style.display = 'none';
-            
             const messageSection = document.getElementById('messageSection');
             
             // Step 1: Fade out the old content
@@ -55,9 +60,6 @@ $( function() {
               <div class="message-container">
                   <div class="message-content">
                       <div class="message-row">
-                          <div class="profile-pic">
-                              <img src='images/profile-img.jpeg' alt="Profile Picture">
-                          </div>
                           <div class="greeting-bubble">
                               <strong id='typewriter-text'></strong>
                           </div>
@@ -133,7 +135,7 @@ $( function() {
                 
                 // Start the animation
                 animateChars();
-            }, 500);
+            }, 400);
           }
         });
 		
