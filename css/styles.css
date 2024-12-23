@@ -553,14 +553,6 @@ h2, .h2 {
 	border-style: double;
 	border-color: rgba(255, 255, 255, 0.45);
 }
-#overlay {
-	background: rgba(0, 0, 0, 0.56) url(../images/overlays/01.png) top left repeat;
-	position: fixed;
-	top: 0px;
-	width: 100%;
-	bottom: 0px;
-	opacity: 0.8;
-}
 /* IE7 inline-block hack */
 *+html .styled div {
 	display: inline;

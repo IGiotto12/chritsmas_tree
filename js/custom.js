@@ -7,14 +7,6 @@ Theme by: WebThemez.com
 Note: donate to remove backlink form the site
 */
 
-// Show the pop-up when the page loads
-window.addEventListener("load", () => {
-  const popup = document.getElementById("popup");
-  const overlay = document.getElementById("overlay");
-  popup.style.display = "block";
-  overlay.style.display = "block";
-});
-
 // Play music when the button is clicked
 document.getElementById("playMusicButton").addEventListener("click", () => {
   const popup = document.getElementById("popup");
@@ -31,12 +23,10 @@ document.getElementById("playMusicButton").addEventListener("click", () => {
   overlay.style.display = "none";
 });
 
-var chritsmas = "December  24, 2024 00:00:00"
-var testDate = new Date();
-testDate.setSeconds(testDate.getSeconds() + 5); 
+var birthday = "December  24, 2024 00:00:00"
 // CountDown logic
 $( function() {
-        var endDate = testDate; 
+        var endDate = birthday; 
         $('.countdown.styled').countdown({
           date: endDate,
           render: function(data) {
@@ -52,6 +42,11 @@ $( function() {
             
             // Step 1: Fade out the old content
             messageSection.classList.add('hidden');
+
+            const popup = document.getElementById("popup");
+            const overlay = document.getElementById("overlay");
+            popup.style.display = "block";
+            overlay.style.display = "block";
             
             // Step 2: Wait for the fade-out transition to complete
             setTimeout(() => {
@@ -128,7 +123,7 @@ $( function() {
 
                 // Step 5: Typewriter effect
                 const textElement = document.getElementById('typewriter-text');
-                const text = "圣诞快乐秀琪！我期待以后和你一起渡过的每个圣诞以及其他节日，想在每一个重要的日子里都给你准备一份用心的礼物，想和你在一起久一点再久一点。遇见你是一个美丽的意外，和你的相知是一种无法自拔的缘分，到现在相互的喜欢是我最想守护的东西，和你在一起的日子是我向往的每一天，我深知你很重要但我也更希望你也能知道你自己很重要，从一开始我就不希望你遇到我之后还会觉得孤单，就是像之前跟你说过的一样，有事没事我都在会一直找你玩的。我之前对自己说过，我其中一个人生目标就是找到重要的人，我很希望你能一直在我心里这个位子上，让我的心里有些分量，让我牵挂。有些时候我太喜欢和你在一起的感觉了，让我充满能量，以至于分开的时候我会格外地想你，就像现在这样。我爱你呀，希望你会喜欢我的礼物，更重要的是也喜欢我";
+                const text = "圣诞快乐秀琪！我期待以后和你一起渡过每个圣诞以及任何节日，想在每一个重要的日子里都给你准备一份用心的礼物，想和你在一起久一点再久一点。认识你是一个美丽的意外，之后的逐渐熟悉又像是一种宿命，而现在我向往的未来就是和你在一起的每一天。我之前对自己说过，我其中一个人生目标就是找到重要的人，我想要你能一直在我心里这个位子上，让我的心里有些分量，让我牵挂，让我能为你奋斗。2025年我也会继续爱着你呀，希望你会喜欢我的礼物，更重要的是也喜欢我";
                 
                 // Pre-render all characters
                 [...text].forEach(char => {
@@ -149,10 +144,9 @@ $( function() {
                 
                 // Start the animation
                 animateChars();
-            }, 400);
+            }, 300);
           }
         });
-		
 		
       });
    
