@@ -2,6 +2,17 @@
 Author URI: http://webthemez.com/ 
 Donate to remove backlink form the template.
 */
+
+/* Structure for gift-boxes */
+.gift-boxes {
+    display: flex; /* Enables horizontal alignment */
+    justify-content: center; /* Centers the boxes horizontally */
+    align-items: center; /* Aligns the boxes vertically (optional) */
+    gap: 20px; /* Adds space between the gift boxes */
+	padding-top: 10px;
+}
+
+
 .gift-box {
     position: relative;
     width: 60px;
@@ -41,6 +52,11 @@ Donate to remove backlink form the template.
 }
 
 .hidden-tree {
+    max-width: 200px;
+    height: auto;
+}
+
+.hidden-package {
     max-width: 200px;
     height: auto;
 }
