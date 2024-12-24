@@ -23,7 +23,7 @@ document.getElementById("playMusicButton").addEventListener("click", () => {
   overlay.style.display = "none";
 });
 
-var birthday = "December  24, 2024 00:00:00"
+var birthday = "December  23, 2024 21:30:00"
 // CountDown logic
 $( function() {
         var endDate = birthday; 
